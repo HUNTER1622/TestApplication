@@ -1,0 +1,75 @@
+﻿@model TestApplication.ViewModels.EmployeeViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading">
+                <a href="@Url.Action("AddEmployee","Employee")" class="btn btn-success btn-sm">Add Employee</a>
+            </div>
+            <div class="panel-body">
+                    <h2>Employee Table</h2>
+                    <table class="table table-bordered table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Joining Date</th>
+                                <th>Contact Number</th>
+                                @*<th>Status</th>*@
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model._emplist)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Gender</td>
+                                    <td>@item.ProJoining_Date</td>
+                                    <td>@item.Contact_Number</td>
+                                    @*<td>
+                                        @{
+                                            if (item.Status)
+                                            {
+                                                <i class="fa fa-check-square text-success"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-times-circle text-danger"></i>
+                                            }
+
+                                        }
+                                    </td>*@
+                                    <td>
+                                        <a href="@Url.Action("EditEmployee","Employee",new {Id=item.Id })" class="btn btn-sm btn-warning"><i class='fas fa-edit'></i></a>
+                                        <a href="@Url.Action("DeleteEmployee","Employee", new {Id=item.Id })" class=" btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+    </div>
+   
+
+</body>
+</html>

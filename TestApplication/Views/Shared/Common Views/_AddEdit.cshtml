@@ -1,0 +1,48 @@
+﻿@model TestApplication.Models.Employee
+
+@Html.HiddenFor(x=>x.Id)
+<div class="row form-group col-lg-12">
+    
+    @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", type = "text", required = "required", autocomplete = "true" })
+    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-white" })
+
+</div>
+<div class="row form-group col-lg-12">
+    @Html.LabelFor(x=>x.Email,new {@class="control-label" })
+    @Html.TextBoxFor(x=>x.Email,new {@class="form-control", type="email",autocomplete= "false", required="required" })
+    @Html.ValidationMessageFor(x=>x.Email, "", new {@class= "text-white" })
+</div>
+<div class="row form-group col-lg-12">
+
+    @Html.LabelFor(x=>x.ProJoining_Date,"Joining Date",new {@class="control-label" })
+    @Html.TextBoxFor(x=>x.ProJoining_Date, new {@class="form-control",type="text", required="required",autocomplete="true"})
+    @Html.ValidationMessageFor(x=>x.ProJoining_Date, "", new {@class= "text-white" })
+  
+</div>
+<div class="row form-group col-lg-12">
+
+    @Html.LabelFor(x => x.Contact_Number, new { @class = "control-label" })
+    @Html.TextBoxFor(x => x.Contact_Number, new { @class = "form-control", type = "number", autocomplete = "false", required = "true" })
+    @Html.ValidationMessageFor(x => x.Contact_Number, "", new { @class = "text-white" })
+
+</div>
+<div class="row form-group col-lg-12">
+    <div class="col-lg-3">
+        <label for="Gender">Gender</label>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-check">
+            <small>Male</small><label style="margin-left:20px">@Html.RadioButtonFor(x => x.Gender, "Male", new { @checked = "checked" })</label>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-check">   
+            <small>Female</small><label>@Html.RadioButtonFor(x => x.Gender, "Male")</label>
+        </div>
+    </div>
+    @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-white" })
+</div>
+<div class="row form-group col-lg-12">
+    <button type="submit" style="float:right" class="btn btn-sm btn-primary">Sign In</button>
+</div>
